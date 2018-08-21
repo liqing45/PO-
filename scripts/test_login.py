@@ -25,3 +25,11 @@ class TestLogin:
         self.login_page.input_name(username)
         self.login_page.click_input()
         assert 1
+        
+    @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)
+    @pytest.mark.parametrize("username, password", [("zhangsan", "123456"), ("lisi", "123"), ("wangwu", "654321")])
+    def test_login3(self,username, password):
+        self.login_page.input_password(password)
+        self.login_page.input_name(username)
+        self.login_page.click_input()
+        assert 0
